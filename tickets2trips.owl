@@ -22,14 +22,15 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="&xsd;string">The purpose of this ontology is the allow the mapping of different tickets that are available for several transport agencies to trips that a user may want to conduct.
+
+In order to facilitate the use of the ontology, it is inspired by GTFS and designed to make integrations easy.</Literal>
+    </Annotation>
+    <Annotation>
         <AnnotationProperty IRI="http://purl.org/dc/terms/creator"/>
         <Literal datatypeIRI="&xsd;string">Philipp Eisen</Literal>
     </Annotation>
-    <Annotation>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <Literal datatypeIRI="&xsd;string">The purpose of this ontology is the allow the mapping of different tickets that are available for several transport agencies to trips that a user may want to conduct.
-</Literal>
-    </Annotation>
     <Declaration>
         <Class IRI="#Agency"/>
     </Declaration>
@@ -38,6 +39,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="#DaysTicket"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MonthsTicket"/>
     </Declaration>
     <Declaration>
         <Class IRI="#RidesTicket"/>
@@ -91,6 +95,18 @@
         <ObjectProperty IRI="#validForZone"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#agencyName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#agencyTimezone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#agencyUrl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#agencyZone"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#color"/>
     </Declaration>
     <Declaration>
@@ -106,16 +122,31 @@
         <DataProperty IRI="#headSign"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#name"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="#numAgencyZones"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#numAllowedPassengers"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#numMonths"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#numRides"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#numStops"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#price"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#routeLongName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#routeShortName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#routeType"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#sequence"/>
@@ -125,6 +156,24 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="#startValidityTimeMinutes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#stopCode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#stopLat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#stopLon"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#stopName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#tripStopArrivalTime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#tripStopDepartureTime"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#validityDays"/>
@@ -137,6 +186,10 @@
     </Declaration>
     <SubClassOf>
         <Class IRI="#DaysTicket"/>
+        <Class IRI="#Ticket"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MonthsTicket"/>
         <Class IRI="#Ticket"/>
     </SubClassOf>
     <SubClassOf>
@@ -181,11 +234,15 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#validForZone"/>
-        <Class IRI="#RidesTicket"/>
+        <Class IRI="#DaysTicket"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#validForZone"/>
-        <Class IRI="#StopsTicket"/>
+        <Class IRI="#MonthsTicket"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#validForZone"/>
+        <Class IRI="#RidesTicket"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#validForZone"/>
@@ -224,6 +281,22 @@
         <Class IRI="#AgencyZone"/>
     </ObjectPropertyRange>
     <DataPropertyDomain>
+        <DataProperty IRI="#agencyName"/>
+        <Class IRI="#Agency"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#agencyTimezone"/>
+        <Class IRI="#Agency"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#agencyUrl"/>
+        <Class IRI="#Agency"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#agencyZone"/>
+        <Class IRI="#AgencyZone"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#color"/>
         <Class IRI="#Route"/>
     </DataPropertyDomain>
@@ -244,14 +317,6 @@
         <Class IRI="#Service"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#name"/>
-        <Class IRI="#Agency"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#name"/>
-        <Class IRI="#Route"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="#numAgencyZones"/>
         <Class IRI="#DaysTicket"/>
     </DataPropertyDomain>
@@ -268,8 +333,32 @@
         <Class IRI="#Ticket"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#numMonths"/>
+        <Class IRI="#MonthsTicket"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#numRides"/>
+        <Class IRI="#RidesTicket"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#numStops"/>
+        <Class IRI="#StopsTicket"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#price"/>
         <Class IRI="#Ticket"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#routeLongName"/>
+        <Class IRI="#Route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#routeShortName"/>
+        <Class IRI="#Route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#routeType"/>
+        <Class IRI="#Route"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#sequence"/>
@@ -284,6 +373,30 @@
         <Class IRI="#DaysTicket"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#stopCode"/>
+        <Class IRI="#Stop"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#stopLat"/>
+        <Class IRI="#Stop"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#stopLon"/>
+        <Class IRI="#Stop"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#stopName"/>
+        <Class IRI="#Stop"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#tripStopArrivalTime"/>
+        <Class IRI="#ServiceStop"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#tripStopDepartureTime"/>
+        <Class IRI="#ServiceStop"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#validityDays"/>
         <Class IRI="#DaysTicket"/>
     </DataPropertyDomain>
@@ -295,6 +408,22 @@
         <DataProperty IRI="#validityMinutes"/>
         <Class IRI="#TimeTicket"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#agencyName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#agencyTimezone"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#agencyUrl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#agencyZone"/>
+        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#color"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -316,20 +445,40 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="#name"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="#numAgencyZones"/>
         <Datatype abbreviatedIRI="xsd:positiveInteger"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#numAllowedPassengers"/>
+        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#numMonths"/>
+        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#numRides"/>
+        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#numStops"/>
         <Datatype abbreviatedIRI="xsd:positiveInteger"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#price"/>
         <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#routeLongName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#routeShortName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#routeType"/>
+        <Datatype abbreviatedIRI="xsd:nonNegativeInteger"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#sequence"/>
@@ -344,6 +493,30 @@
         <Datatype abbreviatedIRI="xsd:positiveInteger"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="#stopCode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#stopLat"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#stopLon"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#stopName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#tripStopArrivalTime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#tripStopDepartureTime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="#validityDays"/>
         <Datatype abbreviatedIRI="xsd:positiveInteger"/>
     </DataPropertyRange>
@@ -355,6 +528,14 @@
         <DataProperty IRI="#validityMinutes"/>
         <Datatype abbreviatedIRI="xsd:positiveInteger"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#agencyTimezone</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Use tz database time zones.
+
+See: http://www.wikiwand.com/en/List_of_tz_database_time_zones
+</Literal>
+    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#currency</IRI>
@@ -370,6 +551,32 @@ If the ticket is valid until some Time in the following day add to 24.
 Example: A 1 day ticket is valid until 3 am of the following day.
 
 Then endValidityTimeHours = 27</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#routeType</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">0 - Tram, Streetcar, Light rail. Any light rail or street level system within a metropolitan area.
+1 - Subway, Metro. Any underground rail system within a metropolitan area.
+2 - Rail. Used for intercity or long-distance travel.
+3 - Bus. Used for short- and long-distance bus routes.
+4 - Ferry. Used for short- and long-distance boat service.
+5 - Cable car. Used for street-level cable cars where the cable runs beneath the car.
+6 - Gondola, Suspended cable car. Typically used for aerial cable cars where the car is suspended from the cable.
+7 - Funicular. Any rail system designed for steep inclines.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#tripStopArrivalTime</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Format:  HH:MM:SS (24H)
+
+Example: 13:05:00</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#tripStopDepartureTime</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Format:  HH:MM:SS (24H)
+
+Example: 13:05:00</Literal>
     </AnnotationAssertion>
 </Ontology>
 
