@@ -22,10 +22,22 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Annotation>
+        <AnnotationProperty IRI="#license"/>
+        <Literal datatypeIRI="&xsd;string">The MIT License (MIT)
+Copyright (c) 2016 Philipp Eisen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</Literal>
+    </Annotation>
+    <Annotation>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <Literal datatypeIRI="&xsd;string">The purpose of this ontology is the allow the mapping of different tickets that are available for several transport agencies to trips that a user may want to conduct.
 
-In order to facilitate the use of the ontology, it is inspired by GTFS and designed to make integrations easy.</Literal>
+In order to facilitate the use of the ontology, it is inspired by GTFS and designed to make integrations easy.
+</Literal>
     </Annotation>
     <Annotation>
         <AnnotationProperty IRI="http://purl.org/dc/terms/creator"/>
@@ -38,6 +50,9 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <Class IRI="#AgencyZone"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Calendar"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#DaysTicket"/>
     </Declaration>
     <Declaration>
@@ -48,9 +63,6 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     </Declaration>
     <Declaration>
         <Class IRI="#Route"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Schedule"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Service"/>
@@ -71,10 +83,13 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <Class IRI="#TimeTicket"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasRoute"/>
+        <Class IRI="#ZoneTicket"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#hasSchedule"/>
+        <ObjectProperty IRI="#hasCalendar"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasRoute"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasService"/>
@@ -107,22 +122,25 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <DataProperty IRI="#agencyZone"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#arrivalTime"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="#color"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#currency"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#endValidityTimeHours"/>
+        <DataProperty IRI="#departureTime"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#endValidityTimeMinutes"/>
+        <DataProperty IRI="#endDay"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#endValidityTime"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#headSign"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#numAgencyZones"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#numAllowedPassengers"/>
@@ -135,6 +153,27 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     </Declaration>
     <Declaration>
         <DataProperty IRI="#numStops"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#operatingFridays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#operatingMondays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#operatingSaturdays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#operatingSundays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#operatingThursdays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#operatingTuesdays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#operatingWednesdays"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#price"/>
@@ -152,10 +191,10 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <DataProperty IRI="#sequence"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#startValidityTimeHours"/>
+        <DataProperty IRI="#startDay"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#startValidityTimeMinutes"/>
+        <DataProperty IRI="#startValidityTime"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#stopCode"/>
@@ -170,12 +209,6 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <DataProperty IRI="#stopName"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#tripStopArrivalTime"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#tripStopDepartureTime"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="#validityDays"/>
     </Declaration>
     <Declaration>
@@ -184,17 +217,77 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     <Declaration>
         <DataProperty IRI="#validityMinutes"/>
     </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1856_Warschauer_Straße"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1858_Schlesisches_Tor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1900_Görlitzer_Bahnhof"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1902_Kottbusser_Tor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1904_Prinzenstraße"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BVG"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BVGOneRideAB"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BVG_1DayTicketAB"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BVG_A"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BVG_B"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BVG_ShortTrip"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BVG_U1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Everday"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Görlitzer_Bahnhof"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Kottbusser_Tor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Prinzenstraße"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Schlesisches_Tor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Warschauer_Straße"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="#license"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="#DaysTicket"/>
-        <Class IRI="#Ticket"/>
+        <Class IRI="#ZoneTicket"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#MonthsTicket"/>
-        <Class IRI="#Ticket"/>
+        <Class IRI="#ZoneTicket"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#RidesTicket"/>
-        <Class IRI="#Ticket"/>
+        <Class IRI="#ZoneTicket"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#StopsTicket"/>
@@ -202,15 +295,523 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#TimeTicket"/>
+        <Class IRI="#ZoneTicket"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ZoneTicket"/>
         <Class IRI="#Ticket"/>
     </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Agency"/>
+        <Class IRI="#AgencyZone"/>
+        <Class IRI="#Calendar"/>
+        <Class IRI="#Route"/>
+        <Class IRI="#Service"/>
+        <Class IRI="#ServiceStop"/>
+        <Class IRI="#Stop"/>
+        <Class IRI="#Ticket"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DaysTicket"/>
+        <Class IRI="#MonthsTicket"/>
+        <Class IRI="#RidesTicket"/>
+        <Class IRI="#TimeTicket"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#StopsTicket"/>
+        <Class IRI="#ZoneTicket"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#ServiceStop"/>
+        <NamedIndividual IRI="#1856_Warschauer_Straße"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ServiceStop"/>
+        <NamedIndividual IRI="#1858_Schlesisches_Tor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ServiceStop"/>
+        <NamedIndividual IRI="#1900_Görlitzer_Bahnhof"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ServiceStop"/>
+        <NamedIndividual IRI="#1902_Kottbusser_Tor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#ServiceStop"/>
+        <NamedIndividual IRI="#1904_Prinzenstraße"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Agency"/>
+        <NamedIndividual IRI="#BVG"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#RidesTicket"/>
+        <NamedIndividual IRI="#BVGOneRideAB"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#DaysTicket"/>
+        <NamedIndividual IRI="#BVG_1DayTicketAB"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AgencyZone"/>
+        <NamedIndividual IRI="#BVG_A"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AgencyZone"/>
+        <NamedIndividual IRI="#BVG_B"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#StopsTicket"/>
+        <NamedIndividual IRI="#BVG_ShortTrip"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Route"/>
+        <NamedIndividual IRI="#BVG_U1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Calendar"/>
+        <NamedIndividual IRI="#Everday"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#Görlitzer_Bahnhof"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#Kottbusser_Tor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#Prinzenstraße"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#Schlesisches_Tor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Service"/>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Stop"/>
+        <NamedIndividual IRI="#Warschauer_Straße"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isStop"/>
+        <NamedIndividual IRI="#1856_Warschauer_Straße"/>
+        <NamedIndividual IRI="#Warschauer_Straße"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isStop"/>
+        <NamedIndividual IRI="#1858_Schlesisches_Tor"/>
+        <NamedIndividual IRI="#Schlesisches_Tor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isStop"/>
+        <NamedIndividual IRI="#1900_Görlitzer_Bahnhof"/>
+        <NamedIndividual IRI="#Görlitzer_Bahnhof"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isStop"/>
+        <NamedIndividual IRI="#1902_Kottbusser_Tor"/>
+        <NamedIndividual IRI="#1902_Kottbusser_Tor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isStop"/>
+        <NamedIndividual IRI="#1904_Prinzenstraße"/>
+        <NamedIndividual IRI="#1904_Prinzenstraße"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasRoute"/>
+        <NamedIndividual IRI="#BVG"/>
+        <NamedIndividual IRI="#BVG_U1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#validForAgency"/>
+        <NamedIndividual IRI="#BVGOneRideAB"/>
+        <NamedIndividual IRI="#BVG"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#validForZone"/>
+        <NamedIndividual IRI="#BVGOneRideAB"/>
+        <NamedIndividual IRI="#BVG_A"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#validForZone"/>
+        <NamedIndividual IRI="#BVGOneRideAB"/>
+        <NamedIndividual IRI="#BVG_B"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#validForAgency"/>
+        <NamedIndividual IRI="#BVG_1DayTicketAB"/>
+        <NamedIndividual IRI="#BVG"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#validForZone"/>
+        <NamedIndividual IRI="#BVG_1DayTicketAB"/>
+        <NamedIndividual IRI="#BVG_A"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#validForZone"/>
+        <NamedIndividual IRI="#BVG_1DayTicketAB"/>
+        <NamedIndividual IRI="#BVG_B"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#validForAgency"/>
+        <NamedIndividual IRI="#BVG_ShortTrip"/>
+        <NamedIndividual IRI="#BVG"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasService"/>
+        <NamedIndividual IRI="#BVG_U1"/>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isInZone"/>
+        <NamedIndividual IRI="#Görlitzer_Bahnhof"/>
+        <NamedIndividual IRI="#BVG_A"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isInZone"/>
+        <NamedIndividual IRI="#Kottbusser_Tor"/>
+        <NamedIndividual IRI="#BVG_A"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isInZone"/>
+        <NamedIndividual IRI="#Prinzenstraße"/>
+        <NamedIndividual IRI="#BVG_A"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isInZone"/>
+        <NamedIndividual IRI="#Schlesisches_Tor"/>
+        <NamedIndividual IRI="#BVG_A"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasCalendar"/>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+        <NamedIndividual IRI="#Everday"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasServiceStop"/>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+        <NamedIndividual IRI="#1904_Prinzenstraße"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasServiceStop"/>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+        <NamedIndividual IRI="#1856_Warschauer_Straße"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasServiceStop"/>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+        <NamedIndividual IRI="#1858_Schlesisches_Tor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasServiceStop"/>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+        <NamedIndividual IRI="#1902_Kottbusser_Tor"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasServiceStop"/>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+        <NamedIndividual IRI="#1900_Görlitzer_Bahnhof"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#isInZone"/>
+        <NamedIndividual IRI="#Warschauer_Straße"/>
+        <NamedIndividual IRI="#BVG_A"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#departureTime"/>
+        <NamedIndividual IRI="#1856_Warschauer_Straße"/>
+        <Literal datatypeIRI="&xsd;string">18:56</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#sequence"/>
+        <NamedIndividual IRI="#1856_Warschauer_Straße"/>
+        <Literal datatypeIRI="&xsd;int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#arrivalTime"/>
+        <NamedIndividual IRI="#1858_Schlesisches_Tor"/>
+        <Literal datatypeIRI="&xsd;string">18:58
+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#departureTime"/>
+        <NamedIndividual IRI="#1858_Schlesisches_Tor"/>
+        <Literal datatypeIRI="&xsd;string">18_58</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#sequence"/>
+        <NamedIndividual IRI="#1858_Schlesisches_Tor"/>
+        <Literal datatypeIRI="&xsd;int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#arrivalTime"/>
+        <NamedIndividual IRI="#1900_Görlitzer_Bahnhof"/>
+        <Literal datatypeIRI="&xsd;string">19:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#departureTime"/>
+        <NamedIndividual IRI="#1900_Görlitzer_Bahnhof"/>
+        <Literal datatypeIRI="&xsd;string">19:00
+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#sequence"/>
+        <NamedIndividual IRI="#1900_Görlitzer_Bahnhof"/>
+        <Literal datatypeIRI="&xsd;int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#arrivalTime"/>
+        <NamedIndividual IRI="#1902_Kottbusser_Tor"/>
+        <Literal datatypeIRI="&xsd;string">19:02
+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#departureTime"/>
+        <NamedIndividual IRI="#1902_Kottbusser_Tor"/>
+        <Literal datatypeIRI="&xsd;string">19:02
+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#sequence"/>
+        <NamedIndividual IRI="#1902_Kottbusser_Tor"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#arrivalTime"/>
+        <NamedIndividual IRI="#1904_Prinzenstraße"/>
+        <Literal datatypeIRI="&xsd;string">19:04</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#departureTime"/>
+        <NamedIndividual IRI="#1904_Prinzenstraße"/>
+        <Literal datatypeIRI="&xsd;string">19:04</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#sequence"/>
+        <NamedIndividual IRI="#1904_Prinzenstraße"/>
+        <Literal datatypeIRI="&xsd;int">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#agencyName"/>
+        <NamedIndividual IRI="#BVG"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Berliner Verkehrsbetriebe</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#agencyTimezone"/>
+        <NamedIndividual IRI="#BVG"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">DE</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#agencyUrl"/>
+        <NamedIndividual IRI="#BVG"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">http://www.bvg.de/</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#currency"/>
+        <NamedIndividual IRI="#BVGOneRideAB"/>
+        <Literal datatypeIRI="&xsd;string">€</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#numRides"/>
+        <NamedIndividual IRI="#BVGOneRideAB"/>
+        <Literal datatypeIRI="&xsd;int"></Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#price"/>
+        <NamedIndividual IRI="#BVGOneRideAB"/>
+        <Literal datatypeIRI="&xsd;float">2.7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#currency"/>
+        <NamedIndividual IRI="#BVG_1DayTicketAB"/>
+        <Literal datatypeIRI="&xsd;string">€</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#endValidityTime"/>
+        <NamedIndividual IRI="#BVG_1DayTicketAB"/>
+        <Literal datatypeIRI="&xsd;string">27:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#price"/>
+        <NamedIndividual IRI="#BVG_1DayTicketAB"/>
+        <Literal datatypeIRI="&xsd;float">7.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#startValidityTime"/>
+        <NamedIndividual IRI="#BVG_1DayTicketAB"/>
+        <Literal datatypeIRI="&xsd;string">00:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#agencyTimezone"/>
+        <NamedIndividual IRI="#BVG_A"/>
+        <Literal datatypeIRI="&xsd;string">A</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#agencyZone"/>
+        <NamedIndividual IRI="#BVG_B"/>
+        <Literal datatypeIRI="&xsd;string">B</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#currency"/>
+        <NamedIndividual IRI="#BVG_ShortTrip"/>
+        <Literal datatypeIRI="&xsd;string">€</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#numStops"/>
+        <NamedIndividual IRI="#BVG_ShortTrip"/>
+        <Literal datatypeIRI="&xsd;int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#price"/>
+        <NamedIndividual IRI="#BVG_ShortTrip"/>
+        <Literal datatypeIRI="&xsd;float">1.7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#color"/>
+        <NamedIndividual IRI="#BVG_U1"/>
+        <Literal datatypeIRI="&xsd;string">green
+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#routeShortName"/>
+        <NamedIndividual IRI="#BVG_U1"/>
+        <Literal datatypeIRI="&xsd;string">U1
+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#routeType"/>
+        <NamedIndividual IRI="#BVG_U1"/>
+        <Literal datatypeIRI="&xsd;int">1
+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#operatingFridays"/>
+        <NamedIndividual IRI="#Everday"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#operatingMondays"/>
+        <NamedIndividual IRI="#Everday"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#operatingSaturdays"/>
+        <NamedIndividual IRI="#Everday"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#operatingSundays"/>
+        <NamedIndividual IRI="#Everday"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#operatingThursdays"/>
+        <NamedIndividual IRI="#Everday"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#operatingTuesdays"/>
+        <NamedIndividual IRI="#Everday"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#operatingWednesdays"/>
+        <NamedIndividual IRI="#Everday"/>
+        <Literal datatypeIRI="&xsd;boolean">true</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLat"/>
+        <NamedIndividual IRI="#Görlitzer_Bahnhof"/>
+        <Literal datatypeIRI="&xsd;float">52.499035</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLon"/>
+        <NamedIndividual IRI="#Görlitzer_Bahnhof"/>
+        <Literal datatypeIRI="&xsd;float">52.499035</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#Görlitzer_Bahnhof"/>
+        <Literal datatypeIRI="&xsd;string">Görlitzer Bahnhof
+</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLat"/>
+        <NamedIndividual IRI="#Kottbusser_Tor"/>
+        <Literal datatypeIRI="&xsd;float">13.418379</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLon"/>
+        <NamedIndividual IRI="#Kottbusser_Tor"/>
+        <Literal datatypeIRI="&xsd;float">52.499893</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#Kottbusser_Tor"/>
+        <Literal datatypeIRI="&xsd;string">Kottbusser Tor</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLat"/>
+        <NamedIndividual IRI="#Prinzenstraße"/>
+        <Literal datatypeIRI="&xsd;float">13.406531</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLon"/>
+        <NamedIndividual IRI="#Prinzenstraße"/>
+        <Literal datatypeIRI="&xsd;float">52.498276</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#Prinzenstraße"/>
+        <Literal datatypeIRI="&xsd;string">Prinzenstraße</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLat"/>
+        <NamedIndividual IRI="#Schlesisches_Tor"/>
+        <Literal datatypeIRI="&xsd;float">13.441926</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLon"/>
+        <NamedIndividual IRI="#Schlesisches_Tor"/>
+        <Literal datatypeIRI="&xsd;float">52.50076</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#Schlesisches_Tor"/>
+        <Literal datatypeIRI="&xsd;string">Schlesischer Tor</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#headSign"/>
+        <NamedIndividual IRI="#U1_1856_Uhlandstr"/>
+        <Literal datatypeIRI="&xsd;string">U1 Uhlandstraße</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLat"/>
+        <NamedIndividual IRI="#Warschauer_Straße"/>
+        <Literal datatypeIRI="&xsd;float">13.448721</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopLon"/>
+        <NamedIndividual IRI="#Warschauer_Straße"/>
+        <Literal datatypeIRI="&xsd;float">52.50589</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#stopName"/>
+        <NamedIndividual IRI="#Warschauer_Straße"/>
+        <Literal datatypeIRI="&xsd;string">Warschauer Straße</Literal>
+    </DataPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCalendar"/>
+        <Class IRI="#Service"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasRoute"/>
         <Class IRI="#Agency"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasSchedule"/>
-        <Class IRI="#Service"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#hasService"/>
@@ -234,27 +835,15 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="#validForZone"/>
-        <Class IRI="#DaysTicket"/>
+        <Class IRI="#ZoneTicket"/>
     </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#validForZone"/>
-        <Class IRI="#MonthsTicket"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#validForZone"/>
-        <Class IRI="#RidesTicket"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#validForZone"/>
-        <Class IRI="#TimeTicket"/>
-    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCalendar"/>
+        <Class IRI="#Calendar"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasRoute"/>
         <Class IRI="#Route"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasSchedule"/>
-        <Class IRI="#Schedule"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="#hasService"/>
@@ -280,6 +869,114 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <ObjectProperty IRI="#validForZone"/>
         <Class IRI="#AgencyZone"/>
     </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#agencyName"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#agencyTimezone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#agencyUrl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#agencyZone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#arrivalTime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#color"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#currency"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#departureTime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#endDay"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#endValidityTime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#headSign"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#numAllowedPassengers"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#numMonths"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#numRides"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#numStops"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#operatingFridays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#operatingMondays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#operatingSaturdays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#operatingSundays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#operatingThursdays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#operatingTuesdays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#operatingWednesdays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#price"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#routeLongName"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#routeShortName"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#routeType"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#sequence"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#startDay"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#startValidityTime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#stopCode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#stopLat"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#stopLon"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#stopName"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#validityDays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#validityHours"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#validityMinutes"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="#agencyName"/>
         <Class IRI="#Agency"/>
@@ -297,6 +994,10 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <Class IRI="#AgencyZone"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="#arrivalTime"/>
+        <Class IRI="#ServiceStop"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="#color"/>
         <Class IRI="#Route"/>
     </DataPropertyDomain>
@@ -305,28 +1006,20 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <Class IRI="#Ticket"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#endValidityTimeHours"/>
-        <Class IRI="#DaysTicket"/>
+        <DataProperty IRI="#departureTime"/>
+        <Class IRI="#ServiceStop"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#endValidityTimeMinutes"/>
+        <DataProperty IRI="#endDay"/>
+        <Class IRI="#Calendar"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#endValidityTime"/>
         <Class IRI="#DaysTicket"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#headSign"/>
         <Class IRI="#Service"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#numAgencyZones"/>
-        <Class IRI="#DaysTicket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#numAgencyZones"/>
-        <Class IRI="#RidesTicket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#numAgencyZones"/>
-        <Class IRI="#TimeTicket"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#numAllowedPassengers"/>
@@ -343,6 +1036,34 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     <DataPropertyDomain>
         <DataProperty IRI="#numStops"/>
         <Class IRI="#StopsTicket"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#operatingFridays"/>
+        <Class IRI="#Calendar"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#operatingMondays"/>
+        <Class IRI="#Calendar"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#operatingSaturdays"/>
+        <Class IRI="#Calendar"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#operatingSundays"/>
+        <Class IRI="#Calendar"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#operatingThursdays"/>
+        <Class IRI="#Calendar"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#operatingTuesdays"/>
+        <Class IRI="#Calendar"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#operatingWednesdays"/>
+        <Class IRI="#Calendar"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#price"/>
@@ -365,11 +1086,11 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <Class IRI="#ServiceStop"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#startValidityTimeHours"/>
-        <Class IRI="#DaysTicket"/>
+        <DataProperty IRI="#startDay"/>
+        <Class IRI="#Calendar"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="#startValidityTimeMinutes"/>
+        <DataProperty IRI="#startValidityTime"/>
         <Class IRI="#DaysTicket"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -387,14 +1108,6 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     <DataPropertyDomain>
         <DataProperty IRI="#stopName"/>
         <Class IRI="#Stop"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#tripStopArrivalTime"/>
-        <Class IRI="#ServiceStop"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#tripStopDepartureTime"/>
-        <Class IRI="#ServiceStop"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="#validityDays"/>
@@ -422,7 +1135,11 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#agencyZone"/>
-        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#arrivalTime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#color"/>
@@ -433,20 +1150,20 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="#endValidityTimeHours"/>
-        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+        <DataProperty IRI="#departureTime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="#endValidityTimeMinutes"/>
-        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+        <DataProperty IRI="#endDay"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#endValidityTime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#headSign"/>
         <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#numAgencyZones"/>
-        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#numAllowedPassengers"/>
@@ -463,6 +1180,34 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     <DataPropertyRange>
         <DataProperty IRI="#numStops"/>
         <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#operatingFridays"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#operatingMondays"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#operatingSaturdays"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#operatingSundays"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#operatingThursdays"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#operatingTuesdays"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#operatingWednesdays"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#price"/>
@@ -485,12 +1230,12 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
         <Datatype abbreviatedIRI="xsd:nonNegativeInteger"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="#startValidityTimeHours"/>
-        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+        <DataProperty IRI="#startDay"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="#startValidityTimeMinutes"/>
-        <Datatype abbreviatedIRI="xsd:positiveInteger"/>
+        <DataProperty IRI="#startValidityTime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#stopCode"/>
@@ -506,14 +1251,6 @@ In order to facilitate the use of the ontology, it is inspired by GTFS and desig
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="#stopName"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#tripStopArrivalTime"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#tripStopDepartureTime"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -538,19 +1275,33 @@ See: http://www.wikiwand.com/en/List_of_tz_database_time_zones
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#arrivalTime</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Format:  HH:MM:SS (24H)
+
+Example: 13:05:00</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#currency</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Use ISO 4217 currency code formations
 </Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#endValidityTimeHours</IRI>
+        <IRI>#departureTime</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Format:  HH:MM:SS (24H)
+
+Example: 13:05:00</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#endValidityTime</IRI>
         <Literal datatypeIRI="&rdf;PlainLiteral">Used to tell until which time of a day a daily ticket is valid.
 If the ticket is valid until some Time in the following day add to 24.
 
 Example: A 1 day ticket is valid until 3 am of the following day.
 
-Then endValidityTimeHours = 27</Literal>
+Then endValidityTimeHours = 27:00</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -563,20 +1314,6 @@ Then endValidityTimeHours = 27</Literal>
 5 - Cable car. Used for street-level cable cars where the cable runs beneath the car.
 6 - Gondola, Suspended cable car. Typically used for aerial cable cars where the car is suspended from the cable.
 7 - Funicular. Any rail system designed for steep inclines.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#tripStopArrivalTime</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Format:  HH:MM:SS (24H)
-
-Example: 13:05:00</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#tripStopDepartureTime</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Format:  HH:MM:SS (24H)
-
-Example: 13:05:00</Literal>
     </AnnotationAssertion>
 </Ontology>
 
